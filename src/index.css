@@ -1,0 +1,116 @@
+@import 'tailwindcss';
+
+@theme {
+  /* ── KURIO palette (Figma, frozen) ─────────────────────────── */
+  --color-ink: #140d0a;
+  --color-surface-card: #241612;
+  --color-surface-dark: #38220f;
+  --color-surface-raised: #2f1d15;
+  --color-border: #3f2319;
+  --color-border-soft: #55321f;
+  --color-primary: #d28a4c;
+  --color-accent: #e89b55;
+  --color-foreground: #f5f1eb;
+  --color-secondary: #cfb28c;
+  --color-secondary-strong: #b39463;
+
+  /* semantic aliases (shadcn-style primitives) */
+  --color-background: #140d0a;
+  --color-card: #241612;
+  --color-muted: #38220f;
+  --color-muted-foreground: #cfb28c;
+  --color-destructive: #b3402a;
+  --color-ring: #d28a4c;
+  --color-input: #3f2319;
+
+  /* typography — Roboto Mono is the only face */
+  --font-sans: 'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-mono: 'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* radii used across the product */
+  --radius-pill: 40px;
+  --radius-sheet: 31px;
+  --radius-card: 15px;
+  --radius-modal: 5px;
+  --radius-field: 10px;
+
+  /* elevation */
+  --shadow-modal: 0 0 20px 0 rgba(10, 6, 4, 0.45);
+  --shadow-glowing: 0 0 40px 0 rgba(10, 6, 4, 0.45);
+  --shadow-tabbar: 0 -10px 30px 0 rgba(10, 6, 4, 0.45);
+  --shadow-card: 0 6px 20px 0 rgba(10, 6, 4, 0.45);
+
+  /* gradients */
+  --gradient-cta: linear-gradient(137deg, #d28a4c 0%, rgba(210, 138, 76, 0.8) 100%);
+  --gradient-promo: linear-gradient(135deg, #241612 0%, #2f1d15 100%);
+  --gradient-fab: linear-gradient(180deg, rgba(210, 138, 76, 0.4) 0%, #d28a4c 100%);
+  --gradient-apply: linear-gradient(144deg, rgba(210, 138, 76, 0.54) 0%, #d28a4c 100%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    background-color: var(--color-ink);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background-color: var(--color-primary);
+    color: var(--color-ink);
+  }
+}
+
+@layer utilities {
+  .bg-gradient-cta {
+    background-image: var(--gradient-cta);
+  }
+  .bg-gradient-promo {
+    background-image: var(--gradient-promo);
+  }
+  .bg-gradient-fab {
+    background-image: var(--gradient-fab);
+  }
+  .bg-gradient-apply {
+    background-image: var(--gradient-apply);
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

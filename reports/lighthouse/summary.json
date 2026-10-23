@@ -1,0 +1,162 @@
+{
+  "mobile:/": {
+    "page": "/",
+    "profile": "mobile",
+    "performance": 91,
+    "accessibility": 98,
+    "bestPractices": 100,
+    "seo": 92,
+    "lcp": 2748,
+    "cls": 0,
+    "tbt": 28,
+    "runs": [
+      {
+        "performance": 91,
+        "accessibility": 98,
+        "bestPractices": 100,
+        "seo": 92,
+        "lcp": 2762,
+        "cls": 0,
+        "tbt": 55
+      },
+      {
+        "performance": 91,
+        "accessibility": 98,
+        "bestPractices": 100,
+        "seo": 92,
+        "lcp": 2740,
+        "cls": 0,
+        "tbt": 27
+      },
+      {
+        "performance": 91,
+        "accessibility": 98,
+        "bestPractices": 100,
+        "seo": 92,
+        "lcp": 2748,
+        "cls": 0,
+        "tbt": 28
+      }
+    ]
+  },
+  "mobile:/nft/n01": {
+    "page": "/nft/n01",
+    "profile": "mobile",
+    "performance": 82,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 92,
+    "lcp": 3257,
+    "cls": 0.155,
+    "tbt": 39,
+    "runs": [
+      {
+        "performance": 82,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 92,
+        "lcp": 3260,
+        "cls": 0.155,
+        "tbt": 42
+      },
+      {
+        "performance": 82,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 92,
+        "lcp": 3226,
+        "cls": 0.155,
+        "tbt": 37
+      },
+      {
+        "performance": 82,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 92,
+        "lcp": 3257,
+        "cls": 0.155,
+        "tbt": 39
+      }
+    ]
+  },
+  "desktop:/": {
+    "page": "/",
+    "profile": "desktop",
+    "performance": 100,
+    "accessibility": 98,
+    "bestPractices": 100,
+    "seo": 92,
+    "lcp": 640,
+    "cls": 0.013,
+    "tbt": 0,
+    "runs": [
+      {
+        "performance": 100,
+        "accessibility": 98,
+        "bestPractices": 100,
+        "seo": 92,
+        "lcp": 640,
+        "cls": 0.013,
+        "tbt": 0
+      },
+      {
+        "performance": 99,
+        "accessibility": 98,
+        "bestPractices": 100,
+        "seo": 92,
+        "lcp": 764,
+        "cls": 0.013,
+        "tbt": 0
+      },
+      {
+        "performance": 100,
+        "accessibility": 98,
+        "bestPractices": 100,
+        "seo": 92,
+        "lcp": 603,
+        "cls": 0.013,
+        "tbt": 0
+      }
+    ]
+  },
+  "desktop:/nft/n01": {
+    "page": "/nft/n01",
+    "profile": "desktop",
+    "performance": 99,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 92,
+    "lcp": 745,
+    "cls": 0.0455,
+    "tbt": 0,
+    "runs": [
+      {
+        "performance": 99,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 92,
+        "lcp": 748,
+        "cls": 0.0455,
+        "tbt": 0
+      },
+      {
+        "performance": 99,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 92,
+        "lcp": 716,
+        "cls": 0.0455,
+        "tbt": 0
+      },
+      {
+        "performance": 99,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 92,
+        "lcp": 745,
+        "cls": 0.0455,
+        "tbt": 0
+      }
+    ]
+  }
+}

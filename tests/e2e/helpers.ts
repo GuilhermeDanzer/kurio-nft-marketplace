@@ -42,6 +42,17 @@ export async function register(
   await dialog.locator('form').getByRole('button', { name: 'Criar conta', exact: true }).click()
 }
 
+export async function searchCatalog(page: Page, term: string): Promise<void> {
+  // Desktop: the search lives behind an icon button in the header.
+  // Mobile: the search input is always visible. Use `:visible` so the two
+  // differently-placed inputs (one hidden by CSS) never collide.
+  const searchButton = page.locator('button[aria-label="Buscar NFTs"]:visible')
+  if ((await searchButton.count()) > 0) {
+    await searchButton.click()
+  }
+  await page.locator('input[aria-label="Buscar NFTs"]:visible').fill(term)
+}
+
 export async function addToCart(page: Page, nftName: string): Promise<void> {
   await page.getByRole('link', { name: new RegExp(nftName) }).first().click()
   await expect(page).toHaveURL(/\/nft\//)

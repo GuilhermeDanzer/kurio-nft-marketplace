@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test'
-import { resetDb } from './helpers'
+import { resetDb, searchCatalog } from './helpers'
 
 test.describe('smoke', () => {
   test.beforeEach(async ({ page }) => {
@@ -26,7 +26,7 @@ test.describe('smoke', () => {
 
   test('search filters the catalog', async ({ page }) => {
     await page.goto('/')
-    await page.getByLabel('Buscar NFTs').fill('Ape')
+    await searchCatalog(page, 'Ape')
     await expect(page.getByTestId('nft-grid')).toBeVisible()
     await expect(page.getByText('Emerald Ape #042')).toBeVisible()
   })

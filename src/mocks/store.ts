@@ -42,11 +42,11 @@ export function emitDb(event: string, payload: unknown): void {
   for (const fn of listeners) fn(event, payload)
 }
 
-const STORAGE_KEY = 'kurio:mocks:db:v1'
+const STORAGE_KEY = 'kurio:mocks:db:v4'
 
 function emptyState(): DbState {
   return {
-    version: 1,
+    version: 4,
     collections: seedCollections(),
     nfts: seedNfts(),
     users: users.map((u) => ({ ...u })),
@@ -70,7 +70,7 @@ function load(): DbState {
     const raw = localStorage.getItem(STORAGE_KEY)
     if (raw) {
       const parsed = JSON.parse(raw) as DbState
-      if (parsed.version === 1) return parsed
+      if (parsed.version === 4) return parsed
     }
   } catch {
     /* storage unavailable — fresh state */

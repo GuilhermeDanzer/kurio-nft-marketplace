@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test'
-import { resetDb, login, addToCart } from './helpers'
+import { resetDb, login, addToCart, searchCatalog } from './helpers'
 
 test.describe('realtime', () => {
   test.beforeEach(async ({ page }) => {
@@ -19,7 +19,7 @@ test.describe('realtime', () => {
 
     // O item comprado agora está marcado como vendido no catálogo.
     await page.goto('/')
-    await page.getByLabel('Buscar NFTs').fill('Emerald Ape')
+    await searchCatalog(page, 'Emerald Ape')
     await expect(page.getByRole('link', { name: /Emerald Ape/ }).getByText('Vendido')).toBeVisible()
   })
 })

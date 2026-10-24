@@ -6,7 +6,7 @@ import { z } from 'zod'
    the axios client parses responses with them at runtime.
 ──────────────────────────────────────────────────────────────── */
 
-export const networkIdSchema = z.enum(['ethereum', 'polygon', 'arbitrum'])
+export const networkIdSchema = z.enum(['ethereum', 'polygon', 'solana'])
 export type NetworkId = z.infer<typeof networkIdSchema>
 
 export const networkSchema = z.object({
@@ -27,6 +27,7 @@ export const nftSchema = z.object({
   tokenId: z.string(),
   name: z.string(),
   collectionId: z.string(),
+  categoryId: z.string(),
   networkId: networkIdSchema,
   status: nftStatusSchema,
   edition: z.object({
@@ -63,10 +64,9 @@ export const facetOptionSchema = z.object({
 export type FacetOption = z.infer<typeof facetOptionSchema>
 
 export const facetsSchema = z.object({
-  collections: z.array(facetOptionSchema),
+  categories: z.array(facetOptionSchema),
   networks: z.array(facetOptionSchema),
   price: z.object({ minEth: z.string(), maxEth: z.string() }),
-  statuses: z.array(facetOptionSchema),
 })
 export type Facets = z.infer<typeof facetsSchema>
 

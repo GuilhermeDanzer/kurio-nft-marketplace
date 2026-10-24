@@ -102,6 +102,39 @@
   .scrollbar-none::-webkit-scrollbar {
     display: none;
   }
+  .dual-range {
+    appearance: none;
+    -webkit-appearance: none;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    pointer-events: none;
+  }
+  .dual-range:focus {
+    outline: none;
+  }
+  .dual-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 9999px;
+    background: var(--color-primary);
+    border: 3px solid var(--color-ink);
+    pointer-events: auto;
+    cursor: grab;
+  }
+  .dual-range::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    border-radius: 9999px;
+    background: var(--color-primary);
+    border: 3px solid var(--color-ink);
+    pointer-events: auto;
+    cursor: grab;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

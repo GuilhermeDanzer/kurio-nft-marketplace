@@ -1,5 +1,5 @@
 import { Link, useRouterState } from '@tanstack/react-router'
-import { Home, LayoutGrid, Search, ShoppingBag, UserRound } from 'lucide-react'
+import { Home, Search, ShoppingBag, UserRound } from 'lucide-react'
 import { useCart } from '@/lib/cart'
 import { useAuth } from '@/lib/auth'
 import { useAuthDialog } from '@/components/auth/auth-dialog-context'
@@ -41,14 +41,14 @@ export function MobileTabBar() {
         </Link>
       </div>
 
-      <TabLink to="/" active={false} label="Coleções">
-        <LayoutGrid className="size-5" />
+      <TabLink to="/cart" active={pathname === '/cart'} label="Carrinho">
+        <ShoppingBag className="size-5" />
       </TabLink>
 
       <button
         className="flex h-full flex-col items-center justify-end gap-1 pb-3 text-secondary"
         onClick={() => (status === 'authenticated' ? undefined : openLogin())}
-        aria-label="Conta"
+        aria-label={status === 'authenticated' ? 'Conta' : 'Entrar'}
       >
         {status === 'authenticated' ? (
           <Link to={accountTo} className="flex flex-col items-center gap-1">

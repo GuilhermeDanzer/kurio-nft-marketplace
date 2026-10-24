@@ -117,7 +117,7 @@ export function WalletsPage() {
                 <SelectContent>
                   <SelectItem value="ethereum">Ethereum</SelectItem>
                   <SelectItem value="polygon">Polygon</SelectItem>
-                  <SelectItem value="arbitrum">Arbitrum</SelectItem>
+                  <SelectItem value="solana">Solana</SelectItem>
                 </SelectContent>
               </Select>
             </div>

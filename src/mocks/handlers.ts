@@ -32,6 +32,7 @@ import {
 } from './store'
 import { computeTotals, couponFor, createQuote } from './quotes'
 import { createOrder, getOrder, listOrders, reconcilePendingOrders } from './orders'
+import { categories } from './fixtures'
 
 function ok(data: unknown, status = 200) {
   return HttpResponse.json(data as Parameters<typeof HttpResponse.json>[0], { status })
@@ -117,9 +118,8 @@ export const handlers = [
   http.get('/api/catalog', ({ request }) => {
     const sp = new URL(request.url).searchParams
     const q = (sp.get('q') ?? '').toLowerCase().trim()
-    const collections = getList(sp, 'collections')
+    const collections = getList(sp, 'categories')
     const networks = getList(sp, 'networks')
-    const statuses = getList(sp, 'status')
     const priceMin = sp.get('priceMin')
     const priceMax = sp.get('priceMax')
     const sort = sp.get('sort') ?? 'recent'
@@ -135,9 +135,8 @@ export const handlers = [
         return haystack.includes(q)
       })
     }
-    if (collections.length) items = items.filter((n) => collections.includes(n.collectionId))
+    if (collections.length) items = items.filter((n) => collections.includes(n.categoryId))
     if (networks.length) items = items.filter((n) => networks.includes(n.networkId))
-    if (statuses.length) items = items.filter((n) => statuses.includes(n.status))
     if (priceMin) items = items.filter((n) => Number(n.priceEth) >= Number(priceMin))
     if (priceMax) items = items.filter((n) => Number(n.priceEth) <= Number(priceMax))
 
@@ -166,10 +165,10 @@ export const handlers = [
 
     const all = allNfts()
     const facets = {
-      collections: allCollections().map((c) => ({
+      categories: categories.map((c) => ({
         id: c.id,
         label: c.name,
-        count: all.filter((n) => n.collectionId === c.id).length,
+        count: all.filter((n) => n.categoryId === c.id).length,
       })),
       networks: networksList().map((nw) => ({
         id: nw.id,
@@ -180,10 +179,6 @@ export const handlers = [
         minEth: all.length ? String(Math.min(...all.map((n) => Number(n.priceEth)))) : '0',
         maxEth: all.length ? String(Math.max(...all.map((n) => Number(n.priceEth)))) : '0',
       },
-      statuses: [
-        { id: 'available', label: 'À venda', count: all.filter((n) => n.status === 'available').length },
-        { id: 'sold', label: 'Vendido', count: all.filter((n) => n.status === 'sold').length },
-      ],
     }
 
     return ok({ items: paged, total, page, pageSize, totalPages, facets })
@@ -374,7 +369,7 @@ export const handlers = [
     if (!['metamask', 'walletconnect', 'coinbase'].includes(body.type)) {
       return err('VALIDATION_ERROR', 'Carteira inválida.', 400)
     }
-    if (!['ethereum', 'polygon', 'arbitrum'].includes(body.networkId)) {
+    if (!['ethereum', 'polygon', 'solana'].includes(body.networkId)) {
       return err('VALIDATION_ERROR', 'Rede inválida.', 400)
     }
     const wallet = addWallet(userId, {

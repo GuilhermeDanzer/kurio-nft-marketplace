@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test'
-import { resetDb } from './helpers'
+import { resetDb, searchCatalog } from './helpers'
 
 test.describe('catálogo', () => {
   test.beforeEach(async ({ page }) => {
@@ -9,8 +9,8 @@ test.describe('catálogo', () => {
   test('filtra por coleção e reflete na URL', async ({ page, isMobile }) => {
     test.skip(isMobile, 'sidebar de filtros é desktop-only')
     await page.goto('/')
-    await page.getByRole('checkbox', { name: 'Kurio Apes' }).check()
-    await expect(page).toHaveURL(/collections=c1/)
+    await page.getByRole('checkbox', { name: 'Arte digital' }).check()
+    await expect(page).toHaveURL(/categories=arte-digital/)
     const cards = page.getByTestId('nft-grid').getByRole('link')
     expect(await cards.count()).toBeGreaterThan(0)
   })
@@ -32,7 +32,7 @@ test.describe('catálogo', () => {
 
   test('busca sem resultado mostra estado vazio', async ({ page }) => {
     await page.goto('/')
-    await page.getByLabel('Buscar NFTs').fill('xyz-nao-existe')
+    await searchCatalog(page, 'xyz-nao-existe')
     await expect(page.getByText('Nenhum NFT encontrado.')).toBeVisible()
   })
 })

@@ -36,9 +36,8 @@ export const authApi = {
 /* ── Catalog ──────────────────────────────────────────────────── */
 export interface CatalogQuery {
   q: string | undefined
-  collections: string[] | undefined
+  categories: string[] | undefined
   networks: NetworkId[] | undefined
-  status: string[] | undefined
   priceMin: string | undefined
   priceMax: string | undefined
   sort: CatalogSort | undefined
